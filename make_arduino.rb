@@ -49,3 +49,6 @@ system "open -W -a arduino --args --board arduino:sam:arduino_due_x_dbg --port /
 FileUtils.copy "#{ARDUINO_PATH}/hardware/arduino/sam/platform.ori", "#{ARDUINO_PATH}/hardware/arduino/sam/platform.txt"
 FileUtils.rm "#{ARDUINO_PATH}/hardware/arduino/sam/platform.ori"
 
+# connect to the board
+system "#{File.expand_path("tmp/mruby/bin/mirb-hostbased")} --verbose -p /dev/cu.usbmodemfa131"
+
