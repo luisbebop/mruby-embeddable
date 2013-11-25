@@ -18,7 +18,7 @@ end
 MRuby::Build.new do |conf|
   toolchain :gcc
   conf.gembox 'default'
-  conf.gem :github => 'kyab/mruby-bin-mirb-hostbased', :branch => 'master'
+  conf.gem :github => 'luisbebop/mruby-bin-mirb-hostbased', :branch => 'master'
 end
 
 # Cross Compiling configuration for Arduino Due
