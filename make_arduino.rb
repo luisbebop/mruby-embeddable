@@ -7,6 +7,7 @@ if ARGV[0] == "connect"
   exit
 end
 
+puts "Defining the Arduino path"
 # Arduino Application Folder
 case RUBY_PLATFORM
 when /x86_64-darwin/i
@@ -26,8 +27,8 @@ else
   exit
 end
 
+puts "Patching the Arduino compiler includes"
 platform = File.read "#{ARDUINO_PATH}/hardware/arduino/sam/platform.txt"
-
 # lines to edit on the arduino platform.txt file
 find1 = "compiler.c.flags=-c -g -Os -w -ffunction-sections -fdata-sections -nostdlib --param max-inline-insns-single=500 -Dprintf=iprintf"
 find2 = "compiler.cpp.flags=-c -g -Os -w -ffunction-sections -fdata-sections -nostdlib --param max-inline-insns-single=500 -fno-rtti -fno-exceptions -Dprintf=iprintf"
@@ -47,13 +48,16 @@ FileUtils.copy "#{ARDUINO_PATH}/hardware/arduino/sam/platform.txt", "#{ARDUINO_P
 # writing the new file
 File.open("#{ARDUINO_PATH}/hardware/arduino/sam/platform.txt", "w"){ |f| f.puts platform }
 
+puts "Compiling & Uploading the Arduino binary program"
 # compiling the arduino binary and upload
-system "open -W -a arduino --args --board arduino:sam:arduino_due_x_dbg --port /dev/cu.usbmodemfa131 --upload #{File.expand_path('tmp/mruby/build/mrbgems/mruby-bin-mirb-hostbased/samples/target/chipKITMax32_ArduinoDue_runner/chipKITMax32_ArduinoDue_runner.ino')}"
+system "open -W -a arduino --args --board arduino:sam:arduino_due_x_dbg --port /dev/cu.usbmodemfa131 --upload #{File.expand_path('tmp/mruby/build/mrbgems/mruby-bin-mirb-hostbased/samples/target/chipKITMax32_ArduinoDue_runner/chipKITMax32_ArduinoDue_runner.pde')}"
 
+puts "Restoring the Arduino compiler includes"
 # restore the original platform.txt file
 FileUtils.copy "#{ARDUINO_PATH}/hardware/arduino/sam/platform.ori", "#{ARDUINO_PATH}/hardware/arduino/sam/platform.txt"
 FileUtils.rm "#{ARDUINO_PATH}/hardware/arduino/sam/platform.ori"
 
+puts "Connecting to the board"
 # connect to the board
 system "#{File.expand_path("tmp/mruby/bin/mirb-hostbased")} --verbose -p /dev/cu.usbmodemfa131"
 
