@@ -96,7 +96,7 @@ MRuby::CrossBuild.new("Arduino Due") do |conf|
   conf.gem :github => "masamitsu-murase/mruby-hs-regexp", :branch => "master" 
 
   #Arduino API
-  conf.gem :github =>"kyab/mruby-arduino", :branch => "master"
+  conf.gem :github =>"luisbebop/mruby-arduino", :branch => "master"
 
 end
 
