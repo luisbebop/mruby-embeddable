@@ -2,6 +2,11 @@
 
 require 'fileutils'
 
+if ARGV[0] == "connect"
+  system "#{File.expand_path("tmp/mruby/bin/mirb-hostbased")} --verbose -p /dev/cu.usbmodemfa131"
+  exit
+end
+
 # Arduino Application Folder
 case RUBY_PLATFORM
 when /x86_64-darwin/i
