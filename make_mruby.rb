@@ -34,7 +34,7 @@ MRuby::CrossBuild.new("Arduino Due") do |conf|
     ARDUINO_PATH = '/Applications/Arduino.app/Contents/Resources/Java'
   when /darwin/i
     # Mac OS X
-    ARDUINO_PATH = "/Applications/Arduino.app/Contents/Resources/Java"
+    ARDUINO_PATH = '/Applications/Arduino.app/Contents/Resources/Java'
   when /x86_64-linux/i
     # GNU Linux
     ARDUINO_PATH = '/opt/arduino'
@@ -96,7 +96,7 @@ MRuby::CrossBuild.new("Arduino Due") do |conf|
   conf.gem :github => "masamitsu-murase/mruby-hs-regexp", :branch => "master" 
 
   #Arduino API
-  conf.gem :github =>"luisbebop/mruby-arduino", :branch => "master"
+  conf.gem :github =>"kyab/mruby-arduino", :branch => "master"
 
 end
 
