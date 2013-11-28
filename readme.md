@@ -12,7 +12,7 @@ Run mruby in micro-controllers in an easy way. Support: Arduino Due and others (
 ## Requires
 
 * Arduino 1.5.4 IDE
-* Arduino Due board
+* Arduino Due board (An outstanding ARM 32 bit computer with 84MHZ, 96KB RAM and 512KB FLASH)
 
 ## Install
 
