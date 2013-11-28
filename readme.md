@@ -11,24 +11,40 @@ Run mruby in micro-controllers in an easy way. Support: Arduino Due and others (
 
 ## Requires
 
-* Arduino 1.5.4
+* Arduino 1.5.4 IDE
+* Arduino Due board
 
 ## Install
 
 ```ruby
+# it will clone and compile mruby cross compiling to Arduino
 ruby make_mruby.rb
-ruby make_arduino.rb
+# it will compile the Arduino sketch and flash it to the Arduino due board
+ruby make_arduino.rb compile USB_PORT
 ```
 
 ## Usage
 ```ruby
-ruby make_arduino.rb connect
+ruby make_arduino.rb connect USB_PORT
+```
+
+```shell
+Connecting to the board on usb port /dev/cu.usbmodemfa131
+mirb-hostbased - Hostbased Interactive mruby Shell
+  waiting for target on /dev/cu.usbmodemfa131...
+(target):NON SOH r  chipKIT detected. reopening port..
+(target):TOTAL_ALLOCATED : 89047
+target is ready.
+> #file fib.rb
+ => :fib
+> fib(10)
+ => 89
 ```
 
 ## License
 
 ```
-mruby-embeddable - A mruby utility for mruby projects on micro-controllers.
+mruby-embeddable - A mruby utility for embed mruby on micro-controllers.
 The MIT License (MIT)
 
 Copyright (c) 2013 Luis Silva
